@@ -2,41 +2,77 @@ class Solution {
     public void setZeroes(int[][] arr) {
         int r = arr.length;
         int c = arr[0].length;
-        boolean[] row = new boolean[r];
-        boolean[] col = new boolean[c];
+        boolean zerorow = false;
+        boolean zerocol = false;
+        for(int j=0;j<c;j++)
+        {
+            if(arr[0][j]==0)
+            {
+                zerorow = true;
+                break;
+            }
+        }
+
         for(int i=0;i<r;i++)
         {
-            for(int j=0;j<c;j++)
+            if(arr[i][0]==0)
+            {
+                zerocol = true;
+                break;  
+            }
+        }
+
+
+        for(int i=1;i<r;i++)
+        {
+            for(int j=1;j<c;j++)
             {
                 if(arr[i][j]==0)
                 {
-                    row[i]=true;
-                    col[j]=true;
+                    arr[0][j]=0;
+                    arr[i][0]=0;
                 }
             }
         }
 
 
+        for(int i=1;i<r;i++)
+        {
+            if(arr[i][0]==0)
+            {
+                for(int j=1;j<c;j++)
+                {
+                    arr[i][j] = 0;
+                }
+            }
+        }
 
-        for(int i=0;i<r;i++)
+        for(int j=1;j<c;j++)
+        {
+            if(arr[0][j]==0)
+            {
+                for(int i=1;i<r;i++)
+                {
+                    arr[i][j] = 0;
+                }
+            }
+        }
+
+
+        if(zerorow)
         {
             for(int j=0;j<c;j++)
             {
-                if(row[i])
-                {
-                    for(int b=0;b<c;b++)
-                    {
-                        arr[i][b] = 0;
-                    }
-                }
+                arr[0][j]=0;
+            }
+        }
+        
 
-                else if(col[j])
-                {
-                    for(int a = 0;a<r;a++)
-                    {
-                        arr[a][j] = 0;
-                    }
-                }
+        if(zerocol)
+        {
+            for(int i=0;i<r;i++)
+            {
+                arr[i][0] = 0;
             }
         }
     }
