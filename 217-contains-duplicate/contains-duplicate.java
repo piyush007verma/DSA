@@ -1,6 +1,6 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        HashSet <Integer> set = new HashSet <Integer>();
+        HashSet<Integer> set  = new HashSet<>();
 
         for(int ele:nums)
         {
@@ -8,10 +8,7 @@ class Solution {
             {
                 return true;
             }
-            else
-            {
-                set.add(ele);
-            }
+            set.add(ele);
         }
 
         return false;
