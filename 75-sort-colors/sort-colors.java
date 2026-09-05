@@ -1,32 +1,32 @@
 class Solution {
-    public void sortColors(int[] arr) {
-        int n = arr.length;
-        int low = 0;
+    void swap(int[] arr , int i , int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public void sortColors(int[]arr) {
+        int start = 0;
         int mid = 0;
-        int high = n-1;
-        while(mid<=high)
+        int end = arr.length-1;
+        while(mid<=end)
         {
             if(arr[mid]==0)
             {
-                int temp = arr[mid];
-                arr[mid] = arr[low];
-                arr[low] = temp;
+                swap(arr , start , mid);
+                start++;
                 mid++;
-                low++;
             }
             else if(arr[mid]==1)
             {
                 mid++;
             }
-
-            else
+            else if(arr[mid]==2)
             {
-                int temp = arr[mid];
-                arr[mid] = arr[high];
-                arr[high] = temp; 
-                high--;
+                swap(arr , mid , end);
+                end--;
             }
+
         }
-        
     }
 }
