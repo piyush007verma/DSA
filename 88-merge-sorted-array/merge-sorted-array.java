@@ -5,7 +5,7 @@ class Solution {
         int k = m+n-1;
         while(i>=0 && j>=0)
         {
-            if(nums1[i]>=nums2[j])
+            if(nums1[i]>nums2[j])
             {
                 nums1[k] = nums1[i];
                 i--;
@@ -17,23 +17,24 @@ class Solution {
             }
             k--;
         }
+
+
         if(i<0)
         {
             while(j>=0)
             {
-                nums1[k] = nums2[j];
+                nums1[k--] = nums2[j];
                 j--;
-                k--;
             }
         }
-        else
+
+         if(j<0)
         {
             while(i>=0)
             {
-                nums1[k] = nums1[i];
+                nums1[k--] = nums1[i];
                 i--;
-                k--;
             }
         }
-}
+    }
 }
