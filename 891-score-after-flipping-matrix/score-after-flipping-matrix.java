@@ -2,7 +2,6 @@ class Solution {
     public int matrixScore(int[][] arr) {
         int r = arr.length;
         int c = arr[0].length;
-
         for(int i=0;i<r;i++)
         {
             if(arr[i][0]==0)
@@ -22,10 +21,7 @@ class Solution {
         }
 
 
-
-        
-
-        for(int j=1;j<c;j++)
+        for(int j=0;j<c;j++)
         {
             int zeros = 0;
             int ones = 0;
@@ -63,9 +59,9 @@ class Solution {
         {
             for(int i=0;i<r;i++)
             {
-                score+=arr[i][j]*x;
+                score += arr[i][j] * x;
             }
-            x *= 2;
+            x = x*2;
         }
 
         return score;
