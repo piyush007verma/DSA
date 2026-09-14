@@ -5,39 +5,42 @@ class Solution {
             return false;
         }
 
+        char[] arr = new char[128];
 
-        else
+        for(int i=0;i<s.length();i++)
         {
-            char[] arr = new char[128];
-            for(int i=0;i<s.length();i++)
+            char ch = s.charAt(i);
+            char dh = t.charAt(i);
+            int idx = (int)ch;
+
+            if(arr[idx]=='\u0000' || arr[idx]==dh)
             {
-                char ch = s.charAt(i);
-                int idx = (int)ch;
-                if(arr[idx]!='\u0000' && arr[idx]!=t.charAt(i))
-                {
-                    return false;
-                }
-                else
-                {
-                    arr[idx] = t.charAt(i);
-                }
+                arr[idx] = dh;
             }
 
-            char[] brr = new char[128];
-            for(int i=0;i<t.length();i++)
+            else
             {
-                char ch = t.charAt(i);
-                int idx = (int)ch;
-                if(brr[idx]!='\u0000' && brr[idx]!=s.charAt(i))
-                {
-                    return false;
-                }
-                else
-                {
-                    brr[idx] = s.charAt(i);
-                }
+                return false;
             }
         }
+
+        char [] brr = new char[128];
+        for(int i=0;i<t.length();i++)
+        {
+            char ch = s.charAt(i);
+            char dh = t.charAt(i);
+            int idx = (int)(dh);
+            if(brr[idx]=='\u0000' || brr[idx]==ch)
+            {
+                brr[idx] = ch;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 }
