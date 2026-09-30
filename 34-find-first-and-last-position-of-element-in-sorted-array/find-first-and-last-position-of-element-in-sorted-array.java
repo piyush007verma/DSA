@@ -20,10 +20,13 @@ class Solution {
                 low = mid+1;
             }
         }
+
         if(ans[0]==-1)
         {
             return ans;
         }
+
+        
         low = ans[0];
         high = arr.length-1;
         
