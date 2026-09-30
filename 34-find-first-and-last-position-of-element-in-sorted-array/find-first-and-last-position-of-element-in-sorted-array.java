@@ -20,8 +20,11 @@ class Solution {
                 low = mid+1;
             }
         }
-
-        low = 0;
+        if(ans[0]==-1)
+        {
+            return ans;
+        }
+        low = ans[0];
         high = arr.length-1;
         
         while(low<=high)
