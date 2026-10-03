@@ -16,11 +16,11 @@ class Solution {
     public int romanToInt(String s) {
         int n = s.length();
         int total = 0;
-        for(int i=0;i<n;i++)
+        for(int i=0;i<n-1;i++)
         {
             char current = s.charAt(i);
 
-            if(i+1<n && getvalue(current) < getvalue(s.charAt(i+1)))
+            if(getvalue(current) < getvalue(s.charAt(i+1)))
             {
                 total -= getvalue(current);
             }
@@ -29,6 +29,7 @@ class Solution {
                 total += getvalue(current);
             }
         }
+        total += getvalue(s.charAt(n-1));
 
         return total;
     }
