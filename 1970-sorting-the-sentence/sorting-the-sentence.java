@@ -7,7 +7,7 @@ class Solution {
             boolean sorted = true;
             for(int j=0;j<n-i-1;j++)
             {
-                if((int)arr[j].charAt(arr[j].length()-1) > (int)arr[j+1].charAt(arr[j+1].length()-1))
+                if(arr[j].charAt(arr[j].length()-1) > arr[j+1].charAt(arr[j+1].length()-1))
                 {
                     String temp = arr[j];
                     arr[j] = arr[j+1];
