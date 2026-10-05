@@ -1,48 +1,59 @@
 class Solution {
 
-    public boolean ispossible(int cap, int[] arr, int d) {
-        int n = arr.length;
+    public boolean ispossible(int[] arr , int cap , int days)
+    {
+        int d = 1;
         int load = 0;
-        int days = 1;
-        for (int i = 0; i < n; i++) {
-            if (load + arr[i] <= cap) {
+        for(int i=0;i<arr.length;i++)
+        {
+            if(load + arr[i] <= cap)
+            {
                 load += arr[i];
-            } else {
+            }
+            else
+            {
                 load = arr[i];
-                days++;
+                d++;
             }
         }
 
-        if (days > d) {
-            return false;
-        } else {
+        if(d<=days)
+        {
             return true;
         }
+        else
+        {
+            return false;
+        }
     }
-
     public int shipWithinDays(int[] arr, int days) {
-        int mx = Integer.MIN_VALUE;
-        int ans = 1;
-        int sum = 0;
         int n = arr.length;
-        for (int ele : arr) {
+        int mx = Integer.MIN_VALUE;
+        int sum = 0;
+        int ans = mx;
+        for(int ele : arr)
+        {
             sum += ele;
-            mx = Math.max(ele, mx);
+            mx = Math.max(ele , mx);
         }
 
         int low = mx;
         int high = sum;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (ispossible(mid, arr, days)) {
+        while(low<=high)
+        {
+            int mid = low + (high-low)/2;
+            if(ispossible(arr , mid , days))
+            {
                 ans = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+                high = mid-1;
+            }
+            else
+            {
+                low = mid+1;
             }
         }
 
         return ans;
+
     }
 }
