@@ -1,7 +1,9 @@
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
+        int n = arr.length;
         int low = 1;
-        int high = arr.length-2;
+        int high = n-2;
+
         while(low<=high)
         {
             int mid = low + (high-low)/2;
