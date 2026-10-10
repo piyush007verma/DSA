@@ -3,25 +3,27 @@ class Solution {
         int n = arr.length;
         int low = 0;
         int high = n-1;
-        while(low<=high)
+
+        while(low <= high)
         {
-            int mid = low + (high-low)/2;
+            int mid = low + (high - low)/2;
             if(arr[mid]==target)
             {
                 return mid;
             }
-            else if(arr[mid]<=arr[high]) // RIGHT SORTED PART
+
+            else if(arr[mid]<arr[high])
             {
                 if(target>arr[mid] && target<=arr[high])
                 {
-                    low = mid+1; 
+                    low = mid+1;
                 }
                 else
                 {
                     high = mid-1;
                 }
             }
-            else // LEFT SORTED PART
+            else
             {
                 if(target<arr[mid] && target>=arr[low])
                 {
@@ -31,9 +33,8 @@ class Solution {
                 {
                     low = mid+1;
                 }
-            }   
+            }
         }
-
         return -1;
     }
 }
