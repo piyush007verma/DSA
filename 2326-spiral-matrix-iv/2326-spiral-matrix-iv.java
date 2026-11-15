@@ -13,7 +13,7 @@ class Solution {
 
         int[][] ans = new int[m][n];
 
-        for(int i = 0; i < m; i++) {
+        for (int i = 0; i < m; i++) {
             Arrays.fill(ans[i], -1);
         }
 
@@ -22,35 +22,39 @@ class Solution {
         int left = 0;
         int right = n - 1;
 
-        while(head != null && top <= bottom && left <= right) {
+        while (head != null && top <= bottom && left <= right) {
 
-            // left -> right
-            for(int j = left; j <= right && head != null; j++) {
+            // Left -> Right
+            for (int j = left; j <= right && head != null; j++) {
                 ans[top][j] = head.val;
                 head = head.next;
             }
             top++;
 
-            // top -> bottom
-            for(int i = top; i <= bottom && head != null; i++) {
+            // Top -> Bottom
+            for (int i = top; i <= bottom && head != null; i++) {
                 ans[i][right] = head.val;
                 head = head.next;
             }
             right--;
 
-            // right -> left
-            for(int j = right; j >= left && head != null; j--) {
-                ans[bottom][j] = head.val;
-                head = head.next;
+            // Right -> Left
+            if (top <= bottom) {
+                for (int j = right; j >= left && head != null; j--) {
+                    ans[bottom][j] = head.val;
+                    head = head.next;
+                }
+                bottom--;
             }
-            bottom--;
 
-            // bottom -> top
-            for(int i = bottom; i >= top && head != null; i--) {
-                ans[i][left] = head.val;
-                head = head.next;
+            // Bottom -> Top
+            if (left <= right) {
+                for (int i = bottom; i >= top && head != null; i--) {
+                    ans[i][left] = head.val;
+                    head = head.next;
+                }
+                left++;
             }
-            left++;
         }
 
         return ans;
