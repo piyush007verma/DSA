@@ -54,8 +54,8 @@ class Solution {
         if(start+1 == end) return merge2list(lists[start] , lists[end]);
 
         int mid = start + (end-start)/2;
-        ListNode right = mergehelper(lists , start , mid);
-        ListNode left = mergehelper(lists , mid+1 , end);
+        ListNode left = mergehelper(lists , start , mid);
+        ListNode right = mergehelper(lists , mid+1 , end);
         return merge2list(left , right);
     }
 }
