@@ -25,7 +25,6 @@ class Solution {
         return prev;
     }
     public int pairSum(ListNode head) {
-        if(head==null || head.next==null) return 0;
         ListNode slow = head;
         ListNode fast = head;
         while(fast!=null && fast.next!=null)
